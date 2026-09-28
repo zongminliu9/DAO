@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2026-09-27T16:29:20.377Z",
+  "scenario": "DIM_OFFICE",
+  "target": 250,
+  "result": {
+    "status": "target-reached",
+    "log": [
+      {
+        "iteration": 1,
+        "timestamp": "2026-09-27T16:29:20.377Z",
+        "measured": 89.5,
+        "lux": 129.8,
+        "cct": 4000,
+        "target": 250,
+        "brightnessBefore": 18,
+        "action": "increase",
+        "error": 160.5,
+        "nextBrightness": 38,
+        "delta": 20
+      },
+      {
+        "iteration": 2,
+        "timestamp": "2026-09-27T16:29:20.377Z",
+        "measured": 151.4,
+        "lux": 219.5,
+        "cct": 4000,
+        "target": 250,
+        "brightnessBefore": 38,
+        "action": "increase",
+        "error": 98.6,
+        "nextBrightness": 55.7,
+        "delta": 17.7
+      },
+      {
+        "iteration": 3,
+        "timestamp": "2026-09-27T16:29:20.377Z",
+        "measured": 207.6,
+        "lux": 301,
+        "cct": 4000,
+        "target": 250,
+        "brightnessBefore": 55.7,
+        "action": "increase",
+        "error": 42.4,
+        "nextBrightness": 63.3,
+        "delta": 7.6
+      },
+      {
+        "iteration": 4,
+        "timestamp": "2026-09-27T16:29:20.377Z",
+        "measured": 234.5,
+        "lux": 340.1,
+        "cct": 4000,
+        "target": 250,
+        "brightnessBefore": 63.3,
+        "action": "increase",
+        "error": 15.5,
+        "nextBrightness": 66.1,
+        "delta": 2.8
+      },
+      {
+        "iteration": 5,
+        "timestamp": "2026-09-27T16:29:20.377Z",
+        "measured": 243.6,
+        "lux": 353.2,
+        "cct": 4000,
+        "target": 250,
+        "brightnessBefore": 66.1,
+        "action": "hold",
+        "error": 6.400000000000006,
+        "nextBrightness": 66.1,
+        "delta": 0
+      }
+    ],
+    "final": {
+      "iteration": 5,
+      "timestamp": "2026-09-27T16:29:20.377Z",
+      "measured": 243.6,
+      "lux": 353.2,
+      "cct": 4000,
+      "target": 250,
+      "brightnessBefore": 66.1,
+      "action": "hold",
+      "error": 6.400000000000006,
+      "nextBrightness": 66.1,
+      "delta": 0
+    }
+  },
+  "environment": {
+    "brightness": 66.1,
+    "colorTemperature": 4000
+  },
+  "note": "Deterministic simulator artifact; not physical validation."
+}

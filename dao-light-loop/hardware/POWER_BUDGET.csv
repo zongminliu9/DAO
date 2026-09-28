@@ -1,0 +1,8 @@
+subsystem,state,current_assumption_mA,duty_cycle_percent,weighted_mA,status
+spectral_sensor,sample,1.5,1,0.015,placeholder_measure_on_hardware
+ble_soc,sleep,0.01,95,0.0095,placeholder_measure_on_hardware
+ble_soc,compute_active,3.0,3,0.09,placeholder_measure_on_hardware
+ble_radio,sync_burst,8.0,1,0.08,placeholder_measure_on_hardware
+imu_optional,low_power,0.02,100,0.02,candidate_only
+power_losses,regulator_and_misc,0.05,100,0.05,placeholder
+TOTAL,illustrative_only,,,0.2645,DO_NOT_QUOTE_AS_MEASURED

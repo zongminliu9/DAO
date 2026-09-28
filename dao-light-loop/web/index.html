@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b0c0b">
+  <title>DAO Light Loop — Blueprint Prototype</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main>
+    <nav class="topbar">
+      <div class="brand"><span class="mark">DAO</span><span>Blueprint Prototype</span></div>
+      <div class="runtime"><i id="runtimeDot"></i><span id="status">Checking runtime…</span></div>
+    </nav>
+
+    <header class="intro">
+      <div>
+        <div class="eyebrow">EAR-WORN CLOSED-LOOP LIGHT SYSTEM</div>
+        <h1>Measure the light.<br><em>Change the environment.</em></h1>
+        <p class="lede">DAO measures personal light exposure near the eye plane, computes a time-aware target, changes compatible lighting, then measures again to verify the result.</p>
+      </div>
+      <div class="proof">
+        <div><strong>SENSE</strong><span>spectral light</span></div><b>→</b><div><strong>UNDERSTAND</strong><span>target + deficit</span></div><b>→</b><div><strong>ACT</strong><span>environment</span></div><b>→</b><div><strong>VERIFY</strong><span>closed loop</span></div>
+      </div>
+    </header>
+
+    <section class="hero panel">
+      <div class="metricBlock">
+        <span class="label">LIGHT NOW</span>
+        <strong id="now">—</strong>
+        <small>estimated mel-EDI · prototype</small>
+      </div>
+      <div class="targetBlock">
+        <span class="label">CURRENT TARGET</span>
+        <strong id="target">250</strong>
+        <small id="targetLabel">morning / demo target</small>
+      </div>
+      <div class="ringWrap">
+        <div class="ring" id="ring"><div><strong id="ringValue">0%</strong><span>of target</span></div></div>
+      </div>
+      <div class="environmentBlock">
+        <span class="label">ENVIRONMENT</span>
+        <div class="lampRow"><span>Desk light</span><strong id="brightness">18%</strong></div>
+        <div class="progress"><div id="bar"></div></div>
+        <p id="action">Ready for a deterministic closed-loop demo.</p>
+      </div>
+    </section>
+
+    <section class="control panel">
+      <div class="controlHead">
+        <div>
+          <span class="label">CONTROL LAYER</span>
+          <h2>Run the loop, not a mockup.</h2>
+        </div>
+        <div class="actions"><button class="secondary" id="stop">Stop</button><button class="primary" id="run">Run Closed Loop Demo</button></div>
+      </div>
+      <div class="controlsGrid">
+        <label>Mode<select id="mode"><option value="circadian">Circadian</option><option value="visual">Visual comfort</option><option value="focus">Focus</option></select></label>
+        <label>Scenario<select id="scenario"><option value="DIM_OFFICE">Dim office</option><option value="BRIGHT_WINDOW">Bright window</option><option value="EVENING_HOME">Evening home</option><option value="AIRPLANE_CABIN">Airplane cabin</option></select></label>
+        <label>Sensor<select id="sensorProvider"><option value="simulator">Simulator</option><option value="physical">Physical sensor</option></select></label>
+        <label>Environment<select id="environmentProvider"><option value="simulator">Simulator</option><option value="hue">Philips Hue</option></select></label>
+      </div>
+      <div id="providerWarning" class="warning hidden"></div>
+    </section>
+
+    <section class="panel tracePanel">
+      <div class="sectionHeader"><div><span class="label">CLOSED-LOOP TRACE</span><h2>See the controller converge.</h2></div><div class="sessionMeta" id="sessionMeta">No session yet</div></div>
+      <svg id="plot" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-label="closed loop trace"></svg>
+      <div class="legend"><span><i class="dot measured"></i> measured</span><span><i class="dash"></i> target</span></div>
+    </section>
+
+    <section class="tabs panel">
+      <div class="tabNav"><button class="tab active" data-tab="engineering">Engineering</button><button class="tab" data-tab="travel">Travel mode</button><button class="tab" data-tab="evidence">Evidence chain</button></div>
+
+      <div class="tabPane active" id="tab-engineering">
+        <div class="engGrid">
+          <div class="engCard"><span class="label">SENSOR LINK</span><strong id="sensorState">Simulator ready</strong><p id="sensorDetail">No physical sample received in this runtime.</p></div>
+          <div class="engCard"><span class="label">LIGHTING LINK</span><strong id="hueState">Simulator ready</strong><p id="hueDetail">Hue is optional and remains disabled until local bridge credentials exist.</p></div>
+          <div class="engCard"><span class="label">CALIBRATION</span><strong>Versioned layer</strong><p>Raw spectral counts are separated from derived metrics. No fake “medical-grade” claim.</p></div>
+          <div class="engCard"><span class="label">FAILSAFE</span><strong>Bounded control</strong><p>Deadband, saturation, stale-sensor rejection, max iterations, max duration and manual stop.</p></div>
+        </div>
+        <div class="channelsWrap">
+          <div><span class="label">LATEST RAW SPECTRAL CHANNELS</span><p>Physical AS7341 telemetry appears here automatically.</p></div>
+          <div id="channels" class="channels"></div>
+        </div>
+      </div>
+
+      <div class="tabPane" id="tab-travel">
+        <div class="travelGrid">
+          <div>
+            <span class="label">TRAVEL / JET-LAG PRODUCT PATH</span>
+            <h2>Turn measured light into an adaptive travel plan.</h2>
+            <p>The prototype planner demonstrates how DAO can convert timezone displacement into seek-light / reduce-light windows, then later verify adherence with the ear-worn sensor. It is intentionally labeled as a product heuristic, not medical guidance.</p>
+          </div>
+          <div class="travelForm">
+            <label>Origin timezone<input id="originTz" value="America/Los_Angeles"></label>
+            <label>Destination timezone<input id="destTz" value="Asia/Tokyo"></label>
+            <label>Plan length<select id="travelDays"><option>3</option><option selected>4</option><option>5</option></select></label>
+            <button class="primary" id="planTravel">Generate travel plan</button>
+          </div>
+        </div>
+        <div id="travelResult" class="travelResult"></div>
+      </div>
+
+      <div class="tabPane" id="tab-evidence">
+        <div class="evidenceGrid">
+          <div><span>01</span><strong>Functional proof</strong><p>Deterministic demo runs without hardware and uses the same controller interface as physical mode.</p></div>
+          <div><span>02</span><strong>Hardware path</strong><p>ESP32-C3 + AS7341 V0, with a miniaturized BLE + rigid-flex Rev A architecture documented separately.</p></div>
+          <div><span>03</span><strong>Calibration honesty</strong><p>Derived metrics are development estimates until validated against a calibrated spectroradiometer.</p></div>
+          <div><span>04</span><strong>Build plan</strong><p>EVT → optical calibration → wearability → pilot → manufacturing DFM is mapped to a 12-week Blueprint sprint.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footerGrid">
+      <div><span class="label">PROTOTYPE STACK</span><p>AS7341 V0 · ESP32-C3 · Node.js · local control API · Philips Hue · parametric CAD · deterministic simulator</p></div>
+      <div><span class="label">CLAIM BOUNDARY</span><p>Engineering prototype. No diagnosis or treatment claims. Estimated melanopic metrics require production calibration.</p></div>
+    </section>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

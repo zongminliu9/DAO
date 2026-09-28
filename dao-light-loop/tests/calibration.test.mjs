@@ -1,0 +1,3 @@
+import test from "node:test";import assert from "node:assert/strict";import {normalizeSample,deriveMetrics} from "../core/calibration.mjs";
+test("normalization scales gain and integration time",()=>{const s=normalizeSample({gain:2,integrationMs:50,channels:{f1:100}});assert.equal(s.channels.f1,100)});
+test("derived metrics are deterministic and labeled uncalibrated",()=>{const channels={f1:100,f2:200,f3:300,f4:400,f5:500,f6:500,f7:300,f8:200,clear:700,nir:50};const m=deriveMetrics({gain:1,integrationMs:100,channels});assert.ok(m.lux>0);assert.ok(m.melanopicEdi>0);assert.equal(m.calibratedForClaims,false)});

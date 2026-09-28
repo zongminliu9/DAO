@@ -1,0 +1,14 @@
+stage,category,part_or_example,qty,status,selection_gate
+V0,spectral sensor,AS7341 breakout board,1,selected_for_fast_demo,physical bench validation
+V0,MCU,ESP32-C3 development board,1,selected_for_fast_demo,firmware flash + telemetry
+V0,power,USB-C cable or protected LiPo setup,1,usb_preferred_for_demo,repeatable demo first
+V0,actuator,Philips Hue compatible lamp + bridge,1,optional_physical_actuator,local bridge verification
+V0,mechanical,3D printed near-ear engineering carrier,1,to_build,optical orientation study
+Rev A,spectral sensor,AS7343/TCS3448-class miniature sensor,1,candidate,reference calibration + availability
+Rev A,MCU,nRF52-class low-power BLE SoC,1,candidate,current + package + RF
+Rev A,motion,BMA400-class low-power accelerometer,1,optional,prove wear/context value
+Rev A,battery,30-80 mAh LiPo,1,unselected,measured power + comfort
+Rev A,power,LiPo charger + regulator/PMIC,1,unselected,battery + thermal + charge method
+Rev A,interconnect,custom rigid-flex PCB,1,to_design,optical + mechanical partition
+Rev A,optics,diffuser + aperture + optical window,1,to_test,angular response + calibration
+Rev A,charging,pogo or magnetic contacts,2,to_test,mechanics + skin/corrosion

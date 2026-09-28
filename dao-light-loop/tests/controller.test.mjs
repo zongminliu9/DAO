@@ -1,0 +1,4 @@
+import test from "node:test";import assert from "node:assert/strict";import {computeControl,runClosedLoop} from "../core/controller.mjs";import {SimulatedEnvironment,SimulatedSensor} from "../core/simulator.mjs";
+test("deadband holds",()=>{const r=computeControl({measured:198,target:200,brightness:50,deadband:8});assert.equal(r.action,"hold")});
+test("controller saturates",()=>{const r=computeControl({measured:0,target:1000,brightness:95,maxBrightness:100});assert.equal(r.nextBrightness,100)});
+test("simulator converges",async()=>{const env=new SimulatedEnvironment({brightness:18});const sensor=new SimulatedSensor(env);const r=await runClosedLoop({sensor,environment:env,target:250,maxIterations:10,deadband:8});assert.equal(r.status,"target-reached");assert.ok(r.log.at(-1).measured>=242)});

@@ -1,0 +1,28 @@
+{
+  "revision": "Rev-A planning envelope",
+  "status": "constraints, not frozen product specifications",
+  "optical": {
+    "sensorPackageMm": [3.1, 2.0, 1.0],
+    "apertureNominalMm": 2.0,
+    "requiresDiffuser": true,
+    "forwardFacingPreferred": true,
+    "calibrateInFinalOpticalStack": true
+  },
+  "mechanical": {
+    "currentFaceEnvelopeMm": [18, 26],
+    "target": "reduce after battery, flex and clip selection",
+    "avoidOpaqueOcclusionOfSensor": true
+  },
+  "rf": {
+    "continuousMetalOverAntenna": false,
+    "validateNearHead": true
+  },
+  "power": {
+    "candidateBatteryMahRange": [30, 80],
+    "batteryLifeClaimAllowedBeforeMeasurement": false
+  },
+  "data": {
+    "physicalSampleMaxAgeSeconds": 10,
+    "rawSpectralRetentionForCalibration": true
+  }
+}
